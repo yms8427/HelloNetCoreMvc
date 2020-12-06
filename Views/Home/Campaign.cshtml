@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Hello.Web.Models.Package>
+@{
+    ViewData["Title"] = "Kampanyalar";
+}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Fiyatlandırma</h1>
+    <p class="lead">Size sunduğumuz hizmetleri gömzden geçirin ve uygun paketlere aşağıdaki kampanya detayından göz atın. Beraber çalışmayı iple çekiyoruz</p>
+</div>
+<h3 class="display-4">Vue Çıktısı</h3>
+<div class="card-deck mb-3 text-center" id="camp">
+    <div class="card mb-4 shadow-sm" v-for="p in packages">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">{{p.name}}</h4>
+        </div>
+        <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{p.price}}$ <small class="text-muted">/ ay</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+                <li>{{p.userCount}} kullanıcı hakkı</li>
+                <li>{{p.storage}} GB alan kullanımı</li>
+                <li>{{p.supportType}}</li>
+                <li>Yardım masasına 7/24 ulaşım</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Kayıt Ol</button>
+        </div>
+    </div>
+</div>
+<h3 class="display-4">C# Çıktısı</h3>
+<div class="card-deck mb-3 text-center">
+    @foreach (var p in Model)
+    {
+        <div class="card mb-4 shadow-sm" v-for="p in packages">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">@p.Name</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">@p.Price$ <small class="text-muted">/ ay</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>@p.UserCount kullanıcı hakkı</li>
+                    <li>@p.Storage GB alan kullanımı</li>
+                    <li>@p.SupportType</li>
+                    <li>Yardım masasına 7/24 ulaşım</li>
+                </ul>
+                <button type="button" class="btn btn-lg btn-block btn-outline-primary">Kayıt Ol</button>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts {
+    <script src="~/js/pages/campaign.js"></script>
+}
